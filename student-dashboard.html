@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Dashboard - EduConnect</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: #f0f2f5;
+    }
+    header {
+      background: #007BFF;
+      color: #fff;
+      padding: 15px 20px;
+      text-align: center;
+    }
+    main {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      max-width: 1200px;
+      margin: 20px auto;
+    }
+    section {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+    }
+    h2 {
+      margin-top: 0;
+      color: #007BFF;
+    }
+    #performance-section {
+      text-align: center;
+    }
+    #performance-section canvas {
+      max-width: 400px;
+      margin: auto;
+    }
+    #chat-messages {
+      height: 300px;
+      overflow-y: auto;
+      border: 1px solid #ddd;
+      padding: 10px;
+      background: #f9f9f9;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+    }
+    .message {
+      padding: 8px 12px;
+      border-radius: 8px;
+      margin: 5px 0;
+      max-width: 70%;
+    }
+    .sent {
+      align-self: flex-end;
+      background: #007BFF;
+      color: #fff;
+    }
+    .received {
+      align-self: flex-start;
+      background: #e0e0e0;
+    }
+    #chat-input {
+      display: flex;
+      margin-top: 10px;
+    }
+    #chat-input input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px 0 0 4px;
+      outline: none;
+    }
+    #chat-input button {
+      padding: 10px 20px;
+      border: none;
+      background: #007BFF;
+      color: #fff;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    #chat-input button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Student Dashboard</h1>
+  </header>
+  
+  <main>
+    <section id="doubt-chat">
+        <h2>Doubt Chat</h2>
+        
+        <label for="teacherSelect">Select a Teacher:</label>
+        <select id="teacherSelect">
+          <option value="Teacher 1">Teacher 1</option>
+          <option value="Teacher 2">Teacher 2</option>
+          <option value="Teacher 3">Teacher 3</option>
+        </select>
+      
+        <div id="chat-messages">
+          <div class="message received"><strong>Mentor:</strong> Hello, how can I help you today?</div>
+          <div class="message sent"><strong>You:</strong> I have a question about the assignment.</div>
+        </div>
+      
+        <div id="chat-input">
+          <input type="text" placeholder="Type your message..." id="chatMessage">
+          <button onclick="sendMessage()">Send</button>
+        </div>
+      </section>
+    
+    <section id="performance-section">
+      <h2>Performance Graph</h2>
+      <canvas id="performanceChart"></canvas>
+    </section>
+    
+    <section id="materials">
+      <h2>Academic Calendar</h2>
+      <ul>
+        <li><a href="https://sitttrkerala.ac.in/index.php?r=site%2Fspecial-docs&id=27" download>Deploma -S1</a></li>
+        <li><a href="https://sitttrkerala.ac.in/index.php?r=site%2Fspecial-docs&id=27" download>Deploma-S2</a></li>
+      </ul>
+    </section>
+    <section id="materials">
+      <h2>Study Materials</h2>
+      <ul>
+        <li><a href="https://sitttrkerala.ac.in/index.php?r=site%2Fdiploma-syllabus-courses&prog=CT" download>MODEULE 1</a></li>
+        <li><a href="https://sitttrkerala.ac.in/index.php?r=site%2Fdiploma-syllabus-courses&prog=CM" download>MODULE 2</a></li>
+      </ul>
+    </section>
+    
+    <section id="materials">
+      <h2>Exams</h2>
+      <a href="https://docs.google.com/forms/d/1ibqFYsPiGmetg_OtMyxs_ibuCamjf3zvBuHqYENdGJo/closedform" target="_blank">Go to exam</a>
+    </section>
+  </main>
+  
+  <script>
+    function sendMessage() {
+      var input = document.getElementById('chatMessage');
+      var message = input.value.trim();
+      var teacher = document.getElementById('teacherSelect').value;
+      if (message !== "") {
+        var messagesDiv = document.getElementById('chat-messages');
+        var newMsg = document.createElement('div');
+        newMsg.classList.add('message', 'sent');
+        newMsg.innerHTML = `<strong>You (to ${teacher}):</strong> ${message}`;
+        messagesDiv.appendChild(newMsg);
+        input.value = "";
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+      }
+    }
+    
+    var ctx = document.getElementById('performanceChart').getContext('2d');
+    var performanceChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: ['CCN', 'CSI', 'OOPS', 'WP', 'DS'],
+        datasets: [{
+          data: [20, 25, 15, 30, 10],
+          backgroundColor: ['#ff6384', '#36a2eb', '#ffce56', '#4bc0c0', '#9966ff']
+        }]
+      },
+      options: {
+        responsive: true,
+      }
+    });
+  </script>
+</body>
+</html>
+

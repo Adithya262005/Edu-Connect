@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Dashboard - EduConnect</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: #f0f2f5;
+    }
+    header {
+      background: #007BFF;
+      color: #fff;
+      padding: 15px 20px;
+      text-align: center;
+    }
+    main {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      max-width: 1200px;
+      margin: 20px auto;
+    }
+    section {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+    }
+    h2 {
+      margin-top: 0;
+      color: #007BFF;
+    }
+    /* Doubt Chat Section */
+    #doubt-chat {
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+    }
+    #chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 10px;
+      border: 1px solid #ddd;
+      margin-bottom: 10px;
+    }
+    #chat-input {
+      display: flex;
+    }
+    #chat-input input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px 0 0 4px;
+      outline: none;
+    }
+    #chat-input button {
+      padding: 10px 20px;
+      border: none;
+      background: #007BFF;
+      color: #fff;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    #chat-input button:hover {
+      background: #0056b3;
+    }
+    /* Performance Graph Section */
+    #performance-section canvas {
+      width: 100%;
+      height: 200px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    /* Study Materials Section */
+    #materials ul {
+      list-style: none;
+      padding: 0;
+    }
+    #materials li {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+    }
+    #materials a {
+      text-decoration: none;
+      color: #007BFF;
+      font-weight: 500;
+    }
+    #materials a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Student Dashboard</h1>
+  </header>
+  
+  <main>
+    <!-- Doubt Chat Section -->
+    <section id="doubt-chat">
+      <h2>Doubt Chat</h2>
+      <div id="chat-messages">
+        <!-- Sample messages -->
+        <p><strong>Mentor:</strong> Hello, how can I help you today?</p>
+        <p><strong>You:</strong> I have a question about the assignment.</p>
+      </div>
+      <div id="chat-input">
+        <input type="text" placeholder="Type your message..." id="chatMessage">
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </section>
+    
+    <!-- Performance Graph Section -->
+    <section id="performance-section">
+      <h2>Performance Graph</h2>
+      <canvas id="ecgGraph"></canvas>
+    </section>
+    
+    <!-- Study Materials Section -->
+    <section id="materials">
+      <h2>Study Materials</h2>
+      <ul>
+        <li><a href="material1.pdf" download>Download Material 1</a></li>
+        <li><a href="material2.pdf" download>Download Material 2</a></li>
+        <li><a href="material3.pdf" download>Download Material 3</a></li>
+      </ul>
+    </section>
+  </main>
+  
+  <script>
+    // Dummy chat send functionality
+    function sendMessage() {
+      var input = document.getElementById('chatMessage');
+      var message = input.value.trim();
+      if(message !== "") {
+        var messagesDiv = document.getElementById('chat-messages');
+        var newMsg = document.createElement('p');
+        newMsg.innerHTML = `<strong>You:</strong> ${message}`;
+        messagesDiv.appendChild(newMsg);
+        input.value = "";
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+      }
+    }
+    
+    // Draw a simple ECG-like graph on canvas
+    function drawECG() {
+      var canvas = document.getElementById('ecgGraph');
+      var ctx = canvas.getContext('2d');
+      // Resize canvas to container's width
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+      
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.beginPath();
+      ctx.moveTo(0, canvas.height/2);
+      for (let x = 0; x < canvas.width; x += 10) {
+        // simulate ECG wave: sine wave plus some spikes
+        let y = canvas.height/2 + Math.sin(x * 0.05) * 30 + (Math.random() * 10 - 5);
+        ctx.lineTo(x, y);
+      }
+      ctx.strokeStyle = '#00bfff';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    }
+    
+    drawECG();
+  </script>
+</body>
+</html>

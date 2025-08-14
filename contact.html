@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us - EduConnect</title>
+  <style>
+    /* Global Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    
+    /* Header */
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      background: #007BFF;
+    }
+    
+    .logo img {
+      max-width: 200px;
+    }
+    
+    .nav-buttons button {
+      margin-left: 10px;
+      background: #fff;
+      color: #007BFF;
+      border: 2px solid #fff;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: background 0.3s, color 0.3s;
+    }
+    
+    .nav-buttons button:hover {
+      background: #0056b3;
+      color: #fff;
+    }
+    
+    /* Contact Section */
+    .contact-section {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    
+    .contact-section h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin-bottom: 30px;
+    }
+    
+    .contact-info div {
+      flex: 1 1 300px;
+      margin: 10px;
+    }
+    
+    .contact-info h3 {
+      margin-bottom: 10px;
+      color: #007BFF;
+    }
+    
+    /* Contact Form */
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .contact-form label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+    
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    
+    .contact-form button {
+      width: 100%;
+      background: #007BFF;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    
+    .contact-form button:hover {
+      background: #0056b3;
+    }
+    
+    /* Footer */
+    footer {
+      background: #007BFF;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header-container">
+    <div class="logo">
+      <a href="Edu_Connect.html">
+        <img src="https://portal.education.lu/portals/3/images/logo-educonnect.png?ver=2021-03-15-132210-387ad" alt="EduConnect Logo">
+      </a>
+    </div>
+    <div class="nav-buttons">
+      <button onclick="location.href='Edu_Connect.html'">Home</button>
+      <button onclick="location.href='about.html'">About</button>
+      <button onclick="location.href='contact.html'">Contact</button>
+      <button onclick="location.href='student-login.html'">Student Login</button>
+      <button onclick="location.href='staff-login.html'">Staff Login</button>
+    </div>
+  </header>
+  
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <h1>Contact Us</h1>
+    
+    <div class="contact-info">
+      <div class="contact-item">
+        <h3>Email</h3>
+        <p><a href="mailto:support@educonnect.com">support@educonnect.com</a></p>
+      </div>
+      <div class="contact-item">
+        <h3>Phone</h3>
+        <p>9188346493</p>
+      </div>
+      <div class="contact-item">
+        <h3>Address</h3>
+        <p>  NSS POLYTECHNIC COLLEGE,<b></b>PANDALAM</p>
+      </div>
+      <div class="contact-item">
+        <h3>Website</h3>
+        <p><a href="https://www.educonnect.com" target="_blank">www.educonnect.com</a></p>
+      </div>
+    </div>
+    
+    <!-- Contact Form --> 
+    
+
+    <div class="contact-form">
+        <h3>Feedback Form</h3>
+      <form action="contact_form_handler_url" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Your name" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Your email" required>
+        
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" placeholder="Your message" required></textarea>
+        
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+  
+ 
+</body>
+</html>
+
